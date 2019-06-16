@@ -14,7 +14,7 @@ class FullPost extends Component {
     }
     
     render () {
-        console.log(this.props.post);
+        // console.log(this.props.post);
         const post = !this.props.id ? <p>Please select a Post!</p> :
             <Frag>
                 <h1>{this.props.post.title}</h1>
