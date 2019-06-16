@@ -2,11 +2,14 @@ import React from 'react';
 
 import './Post.css';
 
-const post = (props) => (
-    <article className="Post">
-        <h1>My Title</h1>
+const post = ({ title, author: a, clicked }) => (
+    
+    <article className="Post" onClick={clicked}>
+        <h1 style={{textTransform: 'capitalize'}}>{title.slice(0, 30)}</h1>
         <div className="Info">
-            <div className="Author">Author</div>
+            <div 
+                className="Author">{`${a[0].toUpperCase()}.${a[1].toUpperCase()}. ${a.slice(2)}`}
+            </div>
         </div>
     </article>
 );
