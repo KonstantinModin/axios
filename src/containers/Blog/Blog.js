@@ -15,7 +15,7 @@ export default class Blog extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/poests')
+        axios.get('/posts')
             .then(response => {
                 this.setState({posts: response.data});
                 console.log('response', response);
