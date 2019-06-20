@@ -5,3 +5,22 @@
     width: 80%;
     margin: auto;
 }
+
+.Posts ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.Posts li {
+    display: inline;
+    margin: 20px;
+}
+
+.Header a {
+    text-decoration: none;
+    color: rgb(35, 37, 124);
+    margin: 20px;
+    font-size: 200%;
+    text-shadow: 1px 1px 3px rgb(36, 24, 80);
+}
