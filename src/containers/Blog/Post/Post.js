@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Post.css';
 
-const post = ({ title, author: a, clicked }) => (
+const Post = ({ title, author: a, clicked }) => (
     
     <article className="Post" onClick={clicked}>
         <h1 style={{textTransform: 'capitalize'}}>{title.slice(0, 30)}</h1>
@@ -14,4 +14,4 @@ const post = ({ title, author: a, clicked }) => (
     </article>
 );
 
-export default post;
+export default Post;
