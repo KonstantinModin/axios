@@ -1,35 +1,47 @@
 import React, { Component } from 'react';
 import Posts from './Posts';
-import FullPost from '../../components/FullPost/FullPost';
-import NewPost from '../../components/NewPost/NewPost';
+import NewPost from './NewPost';
+import StartPage from './StartPage';
+import { Route, Link } from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import './Blog.css';
-// import Frag from '../../components/HOC/Frag';
 
-export default class Blog extends Component {    
+export default class Blog extends Component { 
+    state = {
+        inputText: ''
+    } 
     
-    render () {
-        
-        
+    inputHandler = ({target: {value}}) => { 
+        console.log('value :', value);      
+        this.setState({inputText: value});
+    }
+    
+    render () {         
+
         return (
             <div>
-                <header className="Header">
-                    <nav>
-                        {/* <ul> */}
-                            <a href="/">Home</a>
-                            <a href="/new-post">New Post</a>
-                        {/* </ul> */}
-                    </nav>
-                </header>
-                <Posts />
-                {/* <section>
-                    <FullPost 
-                        // id={this.state.selectedPostId} 
-                        // post={this.state.posts[this.state.selectedPostId-1]}
+                <Router>
+                    <header className="Header">
+                        <nav>                            
+                            <Link to="/">Home</Link>
+                            <Link to="/posts">Posts</Link>                           
+                            <Link to={{
+                                pathname: '/newpost',
+                                hash: '#submit',
+                                search: '&quick-submit=true'
+                            }}>New Post</Link>                            
+                        </nav>
+                        <input 
+                            type="text" 
+                            value={this.state.inputText}
+                            onChange={this.inputHandler}
                         />
-                </section>
-                <section>
-                    <NewPost />
-                </section> */}
+                        <span>this.state.inputText: <strong>{this.state.inputText}</strong></span>
+                    </header>
+                    <Route path="/" component={StartPage} />
+                    <Route path="/posts" component={Posts} />                   
+                    <Route path="/newpost" component={NewPost} />                   
+                </Router>
             </div>
         );
     }

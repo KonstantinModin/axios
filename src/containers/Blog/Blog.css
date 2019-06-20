@@ -14,7 +14,7 @@
     color: rgb(35, 37, 124);
     margin: 20px;
     font-size: 200%;
-    text-shadow: 1px 1px 3px rgb(36, 24, 80);
+    text-shadow: 1px 1px 3px rgb(36, 24, 80);    
 }
 
 .Header a:hover {    
@@ -24,9 +24,18 @@
 
 .Header nav {
     text-align: center;
-    margin: 10px 0;
+    margin: 10px 0;   
 }
 
+input {
+    margin: 0 40px;
+    font-size: 200%;     
+}
+
+span {
+    font-size: 200%;
+    /* font-weight: bold; */
+}
 h1 {
     color: rgb(189, 22, 22);
     text-shadow: 1px 1px 2px rgb(0, 0, 0);

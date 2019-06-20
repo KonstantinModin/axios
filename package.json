@@ -20,7 +20,7 @@
     "nwmatcher": "^1.4.4",
     "querystringify": "^2.1.1",
     "randomatic": "^3.1.1",
-    "react": "^16.0.0",
+    "react": "^16.8.6",
     "react-dev-utils": "^9.0.1",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
