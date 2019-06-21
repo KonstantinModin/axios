@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter} from 'react-router-dom';
 
 import './Post.css';
 
@@ -15,4 +14,4 @@ const Post = ({ title, author: a, clicked }) => (
     </article>
 );
 
-export default withRouter(Post);
+export default Post;
