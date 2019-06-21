@@ -1,7 +1,7 @@
 .FullPost {
     width: 80%;
     margin: 20px auto;
-    border: 1px solid #eee;
+    border: 1px solid rgb(204, 11, 11);
     box-shadow: 0 2px 3px #ccc;
     text-align: center;
 }

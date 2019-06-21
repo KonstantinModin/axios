@@ -2,11 +2,11 @@
     width: 230px;
     padding: 16px;
     text-align: center;
-    border: 1px solid #eee;
+    border: 1px solid rgb(204, 11, 11);
     box-shadow: 0 2px 3px #ccc;
     margin: 10px;
     box-sizing: border-box;
-    cursor: pointer;
+    cursor: pointer;    
 }
 
 .Post:hover,
@@ -16,5 +16,7 @@
 
 .Author {
     margin: 16px 0;
-    color: #ccc;
+    color: rgb(104, 17, 204);
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
 }
