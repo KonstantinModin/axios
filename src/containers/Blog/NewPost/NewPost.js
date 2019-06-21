@@ -39,22 +39,22 @@ const NewPost = (props) => {
                 <input 
                     type="text" 
                     value={state.title} 
-                    onChange={(event) => setState(prevState => {
-                        return {...prevState, title: event.target.value}
+                    onChange={({target: {value}}) => setState(prevState => {
+                        return {...prevState, title: value}
                     })} 
                 />
                 <label>Content</label>
                 <textarea 
                     rows="4" 
                     value={state.content} 
-                    onChange={(event) => setState(prevState => {
-                        return {...prevState, content: event.target.value}
+                    onChange={({target: {value}}) => setState(prevState => {
+                        return {...prevState, content: value}
                     })} />
                 <label>Author</label>
                 <select 
                     value={state.author} 
-                    onChange={(event) => setState(prevState => {
-                        return {...prevState, author: event.target.value}
+                    onChange={({target: {value}}) => setState(prevState => {
+                        return {...prevState, author: value}
                     })}>
                     <option value="Konst">Konst</option>
                     <option value="Max">Max</option>
