@@ -1,49 +1,69 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import './NewPost.css';
 
-class NewPost extends Component {
-    state = {
+const NewPost = (props) => {
+    const [state, setState] = useState({
         title: '',
         content: '',
         author: 'Konst'
-    }
+    });
 
-    componentDidMount() {
-        console.log('this.props NewPost', this.props);
-    }
+    useEffect(() => {
+        console.log('New Post has been mounted');
+        console.log('props NewPost', props);
+        return () => console.log('New Post will unmount!');
+    }, []);
 
-    postDataHandler = () => {
+    const postDataHandler = () => {
         const data = {
-            title: this.state.title,
-            body: this.state.content,
-            author: this.state.author
+            title: state.title,
+            body: state.content,
+            author: state.author
         };
         axios.post('/posts', data)
             .then(response => {
                 console.log(response);
             });
     }
+    useEffect(() => {
+        console.log('state', state);
+    })
 
-    render () {
+    
         return (
             <div className="NewPost">
                 <h1>Add a Post</h1>
                 <label>Title</label>
-                <input type="text" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})} />
+                <input 
+                    type="text" 
+                    value={state.title} 
+                    onChange={(event) => setState(prevState => {
+                        return {...prevState, title: event.target.value}
+                    })} 
+                />
                 <label>Content</label>
-                <textarea rows="4" value={this.state.content} onChange={(event) => this.setState({content: event.target.value})} />
+                <textarea 
+                    rows="4" 
+                    value={state.content} 
+                    onChange={(event) => setState(prevState => {
+                        return {...prevState, content: event.target.value}
+                    })} />
                 <label>Author</label>
-                <select value={this.state.author} onChange={(event) => this.setState({author: event.target.value})}>
+                <select 
+                    value={state.author} 
+                    onChange={(event) => setState(prevState => {
+                        return {...prevState, author: event.target.value}
+                    })}>
                     <option value="Konst">Konst</option>
                     <option value="Max">Max</option>
                     <option value="Manu">Manu</option>
                 </select>
-                <button onClick={this.postDataHandler}>Add Post</button>
+                <button onClick={postDataHandler}>Add Post</button>
             </div>
         );
-    }
+    
 }
 
 export default NewPost;

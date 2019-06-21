@@ -13,7 +13,8 @@ export default class Posts extends Component {
     }
     
     componentDidMount() {
-        console.log(this.props);
+        console.log('Posts have been mounted');
+        // console.log(this.props);
         axios.get('/posts')
             .then(response => {
                 this.setState({posts: response.data});
@@ -23,6 +24,10 @@ export default class Posts extends Component {
                 // this.setState({error: error});
                 console.log('error', error.response);
             });
+    }
+
+    componentWillUnmount() {
+        console.log('Posts will unmount!');
     }
     
     postSelectedHandler = (id) => {
