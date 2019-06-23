@@ -41,7 +41,7 @@ export default class Posts extends Component {
                 <p>Got a Network trouble here: {this.state.error.toString()}</p>
                 <p>Error info: {JSON.stringify(this.state.error.response.config).toString()}</p>
             </Frag> : 
-            this.state.posts.slice(0, 10).map(post => {
+            this.state.posts.slice(0, 25).map(post => {
                 return (
                 <Link to={'/' + post.id}
                       key={post.id}>

@@ -16,19 +16,24 @@ class FullPost extends Component {
     }
 
     componentDidMount() {
+        console.log('FullPost did mount!');
         if (this.props.id) {
             this.setState({post: this.props.post})
             return
         }
         if (this.props.match) {
             console.log('url :', this.props.match.url);
-            axios.get('/posts/' + this.props.match.url.slice(1))
+            axios.get('/posts/' + this.props.match.params.id)
                 .then(response => {
                     console.log('response', response);
                     this.setState({post: response.data})
                 })
                 .catch(error => console.log('error', error));
         }
+    }
+
+    componentWillUnmount(){
+        console.log('FullPost will unmount!');
     }
     
     render () {

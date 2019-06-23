@@ -12,7 +12,7 @@ const NewPost = (props) => {
 
     useEffect(() => {
         console.log('New Post has been mounted');
-        console.log('props NewPost', props);
+        // console.log('props NewPost', props);
         return () => console.log('New Post will unmount!');
     }, []);
 
@@ -28,7 +28,7 @@ const NewPost = (props) => {
             });
     }
     useEffect(() => {
-        console.log('state', state);
+        // console.log('state', state);
     })
 
     

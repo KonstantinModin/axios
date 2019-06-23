@@ -3,7 +3,7 @@ import Posts from './Posts';
 import NewPost from './NewPost';
 import StartPage from './StartPage';
 import FullPost from './FullPost';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 import './Blog.css';
 
@@ -25,7 +25,7 @@ export default class Blog extends Component {
                     <header className="Header">
                         <nav>                            
                             <NavLink to="/" exact>Home</NavLink>
-                            {/* <NavLink to="/posts">Posts</NavLink>                            */}
+                            <NavLink to="/posts">Posts</NavLink>                           
                             <NavLink to={{
                                 pathname: '/newpost',
                                 hash: '#submit',
@@ -39,10 +39,12 @@ export default class Blog extends Component {
                         />
                         <span>this.state.inputText: <strong>{this.state.inputText}</strong></span>
                     </header>
-                    {/* <Route path="/" exact component={StartPage} /> */}
-                    <Route path="/" exact component={Posts} />                   
-                    <Route path="/newpost" exact component={NewPost} />                   
-                    <Route path="/:id" exact component={FullPost} />                   
+                    <Switch>
+                        <Route path="/" exact component={StartPage} />
+                        <Route path="/posts" exact component={Posts} />                   
+                        <Route path="/newpost" exact component={NewPost} />                   
+                        <Route path="/:id" exact component={FullPost} />                   
+                    </Switch>
                 </Router>
             </div>
         );
