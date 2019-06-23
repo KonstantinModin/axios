@@ -22,6 +22,11 @@
     text-shadow: 1px 1px 3px rgb(136, 24, 80);
 }
 
+.Header a.active {    
+    color: rgb(243, 122, 9);   
+    text-shadow: 1px 1px 3px rgb(100, 51, 11);
+}
+
 .Header nav {
     text-align: center;
     margin: 10px 0;   
