@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Frag from '../../../components/HOC/Frag';
 import Post from '../Post';
-import './Posts.css';
 import FullPost from '../FullPost';
+import { Link } from 'react-router-dom';
+import './Posts.css';
 
 export default class Posts extends Component {
     state = {
@@ -41,20 +42,24 @@ export default class Posts extends Component {
                 <p>Error info: {JSON.stringify(this.state.error.response.config).toString()}</p>
             </Frag> : 
             this.state.posts.slice(0, 10).map(post => {
-                return <Post 
-                            key={post.id} 
-                            title={post.title} 
-                            author={post.body.slice(0, 10)}
-                            clicked={() => this.postSelectedHandler(post.id)}/>
+                return (
+                <Link to={'/' + post.id}
+                      key={post.id}>
+                    <Post 
+                        title={post.title} 
+                        author={post.body.slice(0, 10)}
+                        clicked={() => this.postSelectedHandler(post.id)}/>
+                </Link>
+                )
             });            
         
         return (
             <section className="Posts">
                 {posts}
-                <FullPost 
+                {/* <FullPost 
                     id={this.state.selectedPostId} 
                     post={this.state.posts[this.state.selectedPostId-1]} 
-                />
+                /> */}
             </section>
         )
     }

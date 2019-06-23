@@ -4,20 +4,39 @@ import axios from 'axios';
 import './FullPost.css';
 
 class FullPost extends Component {
-    
+    state = {
+        post: null
+    }    
+
     deleteHandler = () => {
         axios.delete('/posts/' + this.props.id)
             .then((response) => {
                 console.log('response', response);
             });
     }
+
+    componentDidMount() {
+        if (this.props.id) {
+            this.setState({post: this.props.post})
+            return
+        }
+        if (this.props.match) {
+            console.log('url :', this.props.match.url);
+            axios.get('/posts/' + this.props.match.url.slice(1))
+                .then(response => {
+                    console.log('response', response);
+                    this.setState({post: response.data})
+                })
+                .catch(error => console.log('error', error));
+        }
+    }
     
     render () {
-        // console.log(this.props.post);
-        const post = !this.props.id ? <p>Please select a Post!</p> :
+        
+        const post = !this.state.post ? <p>Please select a Post!</p> :
             <Frag>
-                <h1>{this.props.post.title}</h1>
-                <p>{this.props.post.body}</p>
+                <h1 style={{textTransform: 'capitalize'}}>{this.state.post.title} Post ID: {this.state.post.id}</h1>
+                <p>{this.state.post.body}</p>
                 <div className="Edit">
                     <button className="Delete" onClick={this.deleteHandler}>Delete</button>
                 </div>

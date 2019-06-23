@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Posts from './Posts';
 import NewPost from './NewPost';
 import StartPage from './StartPage';
+import FullPost from './FullPost';
 import { Route, NavLink } from 'react-router-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 import './Blog.css';
@@ -23,8 +24,8 @@ export default class Blog extends Component {
                 <Router>
                     <header className="Header">
                         <nav>                            
-                            <NavLink to="/" exact >Home</NavLink>
-                            <NavLink to="/posts">Posts</NavLink>                           
+                            <NavLink to="/" exact>Home</NavLink>
+                            {/* <NavLink to="/posts">Posts</NavLink>                            */}
                             <NavLink to={{
                                 pathname: '/newpost',
                                 hash: '#submit',
@@ -38,9 +39,10 @@ export default class Blog extends Component {
                         />
                         <span>this.state.inputText: <strong>{this.state.inputText}</strong></span>
                     </header>
-                    <Route path="/" component={StartPage} />
-                    <Route path="/posts" component={Posts} />                   
-                    <Route path="/newpost" component={NewPost} />                   
+                    {/* <Route path="/" exact component={StartPage} /> */}
+                    <Route path="/" exact component={Posts} />                   
+                    <Route path="/newpost" exact component={NewPost} />                   
+                    <Route path="/:id" exact component={FullPost} />                   
                 </Router>
             </div>
         );
