@@ -9,16 +9,14 @@ class FullPost extends Component {
     }    
 
     deleteHandler = () => {
-        axios.delete('/posts/' + this.props.id)
+        axios.delete('/posts/' + this.props.match.params.id)
             .then((response) => {
                 console.log('response', response);
             });
     }
 
-    loadData() {
-        if (this.state.post) console.log('this.state.post.id', this.state.post.id);
-        if (!this.state.post || this.state.post.id != this.props.match.params.id) {
-            console.log('this.props.match.params.id', this.props.match.params.id);
+    loadData() {        
+        if (!this.state.post || this.state.post.id !== Number(this.props.match.params.id)) {            
             console.log('url :', this.props.match.url);
             axios.get('/posts/' + this.props.match.params.id)
                 .then(response => {
@@ -43,8 +41,7 @@ class FullPost extends Component {
         console.log('FullPost will unmount!');
     }
     
-    render () {
-        
+    render () {        
         const post = !this.state.post ? <p>Please select a Post!</p> :
             <Frag>
                 <h1 style={{textTransform: 'capitalize'}}>{this.state.post.title} Post ID: {this.state.post.id}</h1>

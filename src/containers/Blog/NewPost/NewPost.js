@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 import './NewPost.css';
 
@@ -7,7 +8,8 @@ const NewPost = (props) => {
     const [state, setState] = useState({
         title: '',
         content: '',
-        author: 'Konst'
+        author: 'Konst',
+        // submitted: false
     });
 
     useEffect(() => {
@@ -25,15 +27,20 @@ const NewPost = (props) => {
         axios.post('/posts', data)
             .then(response => {
                 console.log(response);
+                // setState(prevState => {
+                //     return {...prevState, submitted: true}
+                // });
+                props.history.push('/posts');
+
             });
     }
     useEffect(() => {
         // console.log('state', state);
-    })
-
+    })    
     
         return (
             <div className="NewPost">
+                {/* {state.submitted && <Redirect to="/posts" />} */}
                 <h1>Add a Post</h1>
                 <label>Title</label>
                 <input 

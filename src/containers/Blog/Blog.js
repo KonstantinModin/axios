@@ -3,13 +3,14 @@ import Posts from './Posts';
 import NewPost from './NewPost';
 import StartPage from './StartPage';
 // import FullPost from './FullPost';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 import './Blog.css';
 
 export default class Blog extends Component { 
     state = {
-        inputText: ''
+        inputText: '',
+        auth: false
     } 
     
     inputHandler = ({target: {value}}) => { 
@@ -40,9 +41,11 @@ export default class Blog extends Component {
                         <span>this.state.inputText: <strong>{this.state.inputText}</strong></span>
                     </header>
                     <Switch>
-                        <Route path="/" exact component={StartPage} />                                        
-                        <Route path="/posts" component={Posts} />                   
-                        <Route path="/newpost" exact component={NewPost} />                   
+                        <Route path="/" exact component={StartPage} />
+                        <Route path="/posts" component={Posts} />
+                        {this.state.auth && <Route path="/newpost" exact component={NewPost} />}
+                        {/* <Redirect to="/" /> */}
+                        <Route render={() => <h1>Page not found</h1>} />
                     </Switch>
                 </Router>
             </div>
