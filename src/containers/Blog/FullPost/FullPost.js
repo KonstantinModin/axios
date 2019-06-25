@@ -5,7 +5,7 @@ import './FullPost.css';
 
 class FullPost extends Component {
     state = {
-        post: null
+        post: null       
     }    
 
     deleteHandler = () => {
@@ -19,21 +19,24 @@ class FullPost extends Component {
         if (!this.state.post || this.state.post.id !== Number(this.props.match.params.id)) {            
             console.log('url :', this.props.match.url);
             axios.get('/posts/' + this.props.match.params.id)
-                .then(response => {
-                    console.log('response', response);
-                    this.setState({post: response.data})
-                })
-                .catch(error => console.log('error', error));
+            .then(response => {
+                console.log('response', response);
+                this.setState({post: response.data})               
+            })            
+            .catch(error => {
+                console.log('error', error);
+                this.setState({loading: false});
+            });
         }   
-
+        
     }
-
+    
     componentDidMount() {
         console.log('FullPost did mount!');
         this.loadData();            
     }
-
-    componentDidUpdate() {
+    
+    componentDidUpdate() {       
         this.loadData();
     }
 
@@ -42,15 +45,26 @@ class FullPost extends Component {
     }
     
     render () {        
-        const post = !this.state.post ? <p>Please select a Post!</p> :
+        let post = null;
+        if (!this.state.post) {
+            console.log('__Select post!');
+            post = <p>Please select a Post!</p>;
+        } 
+        if (this.props.match.params.id) {
+            console.log('__Loading');
+            post = <p>Loading</p>
+        };
+        if (this.state.post) {
+            console.log('__Post!')
+            post = (
             <Frag>
                 <h1 style={{textTransform: 'capitalize'}}>{this.state.post.title} Post ID: {this.state.post.id}</h1>
                 <p>{this.state.post.body}</p>
                 <div className="Edit">
                     <button className="Delete" onClick={this.deleteHandler}>Delete</button>
                 </div>
-            </Frag>;
-       
+        </Frag>)};
+
         return (
             <div className="FullPost">
                 {post}

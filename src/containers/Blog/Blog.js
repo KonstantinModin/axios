@@ -45,7 +45,7 @@ export default class Blog extends Component {
                         <Route path="/posts" component={Posts} />
                         {this.state.auth && <Route path="/newpost" exact component={NewPost} />}
                         {/* <Redirect to="/" /> */}
-                        <Route render={() => <h1>Page not found</h1>} />
+                        <Route render={() => <h1>Page not found!</h1>} />
                     </Switch>
                 </Router>
             </div>
