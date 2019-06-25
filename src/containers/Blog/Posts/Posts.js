@@ -32,7 +32,9 @@ export default class Posts extends Component {
     }
     
     postSelectedHandler = (id) => {
-        this.setState({selectedPostId: id});
+        // this.props.history.push({pathname: '/' + id})
+        // this.props.history.push('/' + id);
+        // this.setState({selectedPostId: id});
     }
 
     render() {
@@ -43,23 +45,20 @@ export default class Posts extends Component {
             </Frag> : 
             this.state.posts.slice(0, 25).map(post => {
                 return (
-                <Link to={'/' + post.id}
-                      key={post.id}>
+                <Link to={'/' + post.id}>                     
                     <Post 
+                        key={post.id}
                         title={post.title} 
                         author={post.body.slice(0, 10)}
-                        clicked={() => this.postSelectedHandler(post.id)}/>
+                        // clicked={() => this.postSelectedHandler(post.id)}
+                    />
                 </Link>
                 )
             });            
         
         return (
             <section className="Posts">
-                {posts}
-                {/* <FullPost 
-                    id={this.state.selectedPostId} 
-                    post={this.state.posts[this.state.selectedPostId-1]} 
-                /> */}
+                {posts}                
             </section>
         )
     }
