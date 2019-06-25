@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Posts from './Posts';
 import NewPost from './NewPost';
 import StartPage from './StartPage';
-import FullPost from './FullPost';
+// import FullPost from './FullPost';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 import './Blog.css';
@@ -40,10 +40,9 @@ export default class Blog extends Component {
                         <span>this.state.inputText: <strong>{this.state.inputText}</strong></span>
                     </header>
                     <Switch>
-                        <Route path="/" exact component={StartPage} />
-                        <Route path="/posts" exact component={Posts} />                   
+                        <Route path="/" exact component={StartPage} />                                        
+                        <Route path="/posts" component={Posts} />                   
                         <Route path="/newpost" exact component={NewPost} />                   
-                        <Route path="/:id" exact component={FullPost} />                   
                     </Switch>
                 </Router>
             </div>

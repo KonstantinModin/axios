@@ -3,7 +3,7 @@ import axios from 'axios';
 import Frag from '../../../components/HOC/Frag';
 import Post from '../Post';
 import FullPost from '../FullPost';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import './Posts.css';
 
 export default class Posts extends Component {
@@ -33,7 +33,7 @@ export default class Posts extends Component {
     
     postSelectedHandler = (id) => {
         // this.props.history.push({pathname: '/' + id})
-        // this.props.history.push('/' + id);
+        this.props.history.push('/posts/' + id);
         // this.setState({selectedPostId: id});
     }
 
@@ -43,22 +43,23 @@ export default class Posts extends Component {
                 <p>Got a Network trouble here: {this.state.error.toString()}</p>
                 <p>Error info: {JSON.stringify(this.state.error.response.config).toString()}</p>
             </Frag> : 
-            this.state.posts.slice(0, 25).map(post => {
+            this.state.posts.slice(0, 10).map(post => {
                 return (
-                <Link to={'/' + post.id}>                     
+                // <Link to={'/posts/' + post.id}>                     
                     <Post 
                         key={post.id}
                         title={post.title} 
                         author={post.body.slice(0, 10)}
-                        // clicked={() => this.postSelectedHandler(post.id)}
+                        clicked={() => this.postSelectedHandler(post.id)}
                     />
-                </Link>
+                // </Link>
                 )
             });            
         
         return (
             <section className="Posts">
-                {posts}                
+                {posts}  
+                <Route path={this.props.match.url + '/:id'} exact component={FullPost}/>                 
             </section>
         )
     }
