@@ -25,7 +25,7 @@ class FullPost extends Component {
             })            
             .catch(error => {
                 console.log('error', error);
-                this.setState({loading: false});
+                // this.setState({loading: false});
             });
         }   
         
@@ -45,11 +45,8 @@ class FullPost extends Component {
     }
     
     render () {        
-        let post = null;
-        if (!this.state.post) {
-            console.log('__Select post!');
-            post = <p>Please select a Post!</p>;
-        } 
+        let post = <p>Please select a Post!</p>;
+         
         if (this.props.match.params.id) {
             console.log('__Loading');
             post = <p>Loading</p>
@@ -59,9 +56,9 @@ class FullPost extends Component {
             post = (
             <Frag>
                 <h1 style={{textTransform: 'capitalize'}}>{this.state.post.title} Post ID: {this.state.post.id}</h1>
-                <p>{this.state.post.body}</p>
+                <p>{this.state.post.body.repeat(5)}</p>
                 <div className="Edit">
-                    <button className="Delete" onClick={this.deleteHandler}>Delete</button>
+                    <button className="Delete" onClick={this.deleteHandler}>Delete</button>                    
                 </div>
         </Frag>)};
 

@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import Posts from './Posts';
-import NewPost from './NewPost';
+// import NewPost from './NewPost';
 import StartPage from './StartPage';
 // import FullPost from './FullPost';
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 import './Blog.css';
 
+import asyncComponent from '../../components/HOC/asyncComponent';
+const AsyncNewPost = asyncComponent(() => {
+    return import('./NewPost');
+});
+
 export default class Blog extends Component { 
     state = {
         inputText: '',
-        auth: false
+        auth: true
     } 
     
     inputHandler = ({target: {value}}) => { 
@@ -43,7 +48,7 @@ export default class Blog extends Component {
                     <Switch>
                         <Route path="/" exact component={StartPage} />
                         <Route path="/posts" component={Posts} />
-                        {this.state.auth && <Route path="/newpost" exact component={NewPost} />}
+                        {this.state.auth && <Route path="/newpost" component={AsyncNewPost} />}
                         {/* <Redirect to="/" /> */}
                         <Route render={() => <h1>Page not found!</h1>} />
                     </Switch>
