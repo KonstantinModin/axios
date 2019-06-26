@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Frag from '../../../components/HOC/Frag';
+import Frag from '../../../HOC/Frag';
 import Post from '../Post';
 import FullPost from '../FullPost';
 import { Link, Route } from 'react-router-dom';

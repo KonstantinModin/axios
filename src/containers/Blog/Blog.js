@@ -29,6 +29,7 @@ export default class Blog extends Component {
 
         return (
             <div>
+                {/* <Router basename="/my-app"> */}
                 <Router>
                     <header className="Header">
                         <nav>                            

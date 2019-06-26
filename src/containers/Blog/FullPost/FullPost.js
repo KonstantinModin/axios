@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Frag from '../../../components/HOC/Frag';
+import Frag from '../../../HOC/Frag';
 import axios from 'axios';
 import './FullPost.css';
 
