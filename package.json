@@ -15,7 +15,7 @@
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.11",
     "macaddress": "^0.2.9",
-    "merge": "^1.2.1",
+    "merge": "^2.1.1",
     "mime": "^2.4.4",
     "nwmatcher": "^1.4.4",
     "querystringify": "^2.1.1",
