@@ -27,7 +27,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "1.0.13",
     "sshpk": "^1.16.1",
-    "url-parse": "^1.4.7",
+    "url-parse": "^1.5.8",
     "webpack-dev-server": "^3.7.1"
   },
   "scripts": {
