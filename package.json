@@ -25,7 +25,7 @@
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "1.0.13",
+    "react-scripts": "5.0.1",
     "sshpk": "^1.16.1",
     "url-parse": "^1.4.7",
     "webpack-dev-server": "^3.7.1"
